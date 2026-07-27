@@ -1,0 +1,496 @@
+<meta name="robots" content="noindex, nofollow">
+<title>Abdullah Khalid - The Journey</title>
+<meta name="description" content="A scroll-driven journey through a decade of building: founder with an exit, PE operator, and the AI systems built by hand.">
+
+<style>
+  :root {
+    --paper: #F9F9F7;
+    --raise: #FFFFFF;
+    --ink: #17181B;
+    --ink-soft: #4A4D54;
+    --ink-faint: #797D85;
+    --line: #E5E5E1;
+    --line-soft: #EDEDE9;
+    --accent: #0B7A5B;
+    --accent-ink: #075A43;
+    --accent-wash: #ECF4F0;
+    --shadow: 24px 60px -30px rgba(20, 30, 26, 0.30);
+    --serif: Georgia, "Times New Roman", Times, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --maxw: 940px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #101215; --raise: #191C21; --ink: #ECECEA; --ink-soft: #AAAEB5;
+      --ink-faint: #787C84; --line: #272A31; --line-soft: #1E2127;
+      --accent: #3BBE90; --accent-ink: #5FD0A8; --accent-wash: #16241E;
+      --shadow: 24px 60px -30px rgba(0, 0, 0, 0.65);
+    }
+  }
+  :root[data-theme="light"] {
+    --paper: #F9F9F7; --raise: #FFFFFF; --ink: #17181B; --ink-soft: #4A4D54;
+    --ink-faint: #797D85; --line: #E5E5E1; --line-soft: #EDEDE9;
+    --accent: #0B7A5B; --accent-ink: #075A43; --accent-wash: #ECF4F0;
+    --shadow: 24px 60px -30px rgba(20, 30, 26, 0.30);
+  }
+  :root[data-theme="dark"] {
+    --paper: #101215; --raise: #191C21; --ink: #ECECEA; --ink-soft: #AAAEB5;
+    --ink-faint: #787C84; --line: #272A31; --line-soft: #1E2127;
+    --accent: #3BBE90; --accent-ink: #5FD0A8; --accent-wash: #16241E;
+    --shadow: 24px 60px -30px rgba(0, 0, 0, 0.65);
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--sans); font-size: 17px; line-height: 1.6;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+  /* ============ scroll progress ============ */
+  .progress {
+    position: fixed; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--accent); transform-origin: 0 50%; transform: scaleX(0);
+    z-index: 50;
+  }
+  @supports (animation-timeline: scroll()) {
+    .progress {
+      animation: growProgress linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+  @keyframes growProgress { to { transform: scaleX(1); } }
+
+  /* ============ topbar ============ */
+  .topbar { border-bottom: 1px solid var(--line); background: var(--raise); position: relative; z-index: 20; }
+  .topbar .wrap {
+    display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center;
+    justify-content: space-between; padding-top: 13px; padding-bottom: 13px;
+  }
+  .topbar .who { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); letter-spacing: 0.04em; }
+  .topbar .who b { color: var(--ink); font-weight: 600; }
+  .planlink {
+    display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 600;
+    color: var(--paper); background: var(--accent); border-radius: 8px; padding: 9px 16px;
+    transition: background .18s ease;
+  }
+  .planlink:hover { background: var(--accent-ink); text-decoration: none; }
+
+  /* ============ hero, with depth ============ */
+  .hero {
+    position: relative; padding: 96px 0 84px; overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero .glow {
+    position: absolute; inset: -30% -10% auto -10%; height: 520px; pointer-events: none;
+    background: radial-gradient(60% 60% at 30% 40%, color-mix(in srgb, var(--accent) 15%, transparent), transparent 70%);
+    will-change: transform;
+  }
+  @supports (animation-timeline: scroll()) {
+    .hero .glow {
+      animation: glowDrift linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 60vh;
+    }
+  }
+  @keyframes glowDrift { to { transform: translate3d(0, 120px, 0) scale(1.15); opacity: .5; } }
+
+  .hero .kicker {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--accent); margin: 0 0 20px;
+  }
+  .hero h1 {
+    font-family: var(--serif); font-weight: 700; font-size: clamp(42px, 8vw, 84px);
+    line-height: 0.99; letter-spacing: -0.026em; margin: 0 0 22px; text-wrap: balance;
+    position: relative;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero .lede {
+    font-size: clamp(17px, 2.1vw, 20px); color: var(--ink-soft); max-width: 56ch;
+    margin: 0 0 30px; text-wrap: pretty; line-height: 1.55;
+  }
+  .hero .lede b { color: var(--ink); font-weight: 600; }
+  .cue {
+    font-family: var(--mono); font-size: 12px; color: var(--ink-faint);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .cue .bar {
+    display: block; width: 46px; height: 1px; background: var(--line);
+    position: relative; overflow: hidden;
+  }
+  .cue .bar::after {
+    content: ""; position: absolute; inset: 0; background: var(--accent);
+    transform-origin: 0 50%; animation: sweep 2.4s ease-in-out infinite;
+  }
+  @keyframes sweep {
+    0% { transform: scaleX(0); } 50% { transform: scaleX(1); } 100% { transform: scaleX(0); transform-origin: 100% 50%; }
+  }
+
+  /* ============ the 3D journey ============ */
+  .journey {
+    position: relative;
+    padding: 40px 0 0;
+  }
+
+  /* the spine that draws itself */
+  .spine {
+    position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
+    transform: translateX(-50%); pointer-events: none; z-index: 0;
+    background: linear-gradient(to bottom, transparent, var(--line) 6%, var(--line) 94%, transparent);
+  }
+  .spine .fill {
+    position: absolute; inset: 0; background: var(--accent);
+    transform-origin: 50% 0; transform: scaleY(0);
+  }
+  @supports (animation-timeline: scroll()) {
+    .spine .fill {
+      animation: drawSpine linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 30vh 92%;
+    }
+  }
+  @keyframes drawSpine { to { transform: scaleY(1); } }
+
+  .stage {
+    position: relative;
+    height: 58vh;
+    min-height: 400px;
+    z-index: 1;
+    /* perspective must sit on the direct parent of the transformed card */
+    perspective: 1100px;
+    perspective-origin: 50% 38%;
+  }
+  /* the intermediate container must not flatten the 3D space */
+  .stage > .wrap { transform-style: preserve-3d; }
+  .card3d {
+    position: sticky;
+    top: 16vh;
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+    background: var(--raise);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    padding: 34px 34px 32px;
+    max-width: 620px;
+  }
+  .stage:nth-of-type(odd) .card3d { margin: 0 auto 0 0; }
+  .stage:nth-of-type(even) .card3d { margin: 0 0 0 auto; }
+
+  /* entry + exit choreography via scroll-driven animations */
+  @supports (animation-timeline: view()) {
+    .card3d {
+      animation: cardEnter linear both, cardRecede linear both;
+      animation-timeline: view(), view();
+      animation-range: entry 5% cover 38%, exit 10% exit 100%;
+    }
+  }
+  @keyframes cardEnter {
+    from { opacity: 0; transform: translate3d(0, 70px, -320px) rotateX(14deg) rotateY(var(--yaw, -7deg)); }
+    to   { opacity: 1; transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg); }
+  }
+  @keyframes cardRecede {
+    from { opacity: 1; transform: translate3d(0, 0, 0) rotateX(0deg) scale(1); }
+    to   { opacity: 0.18; transform: translate3d(0, -40px, -420px) rotateX(-11deg) scale(0.93); }
+  }
+  .stage:nth-of-type(even) .card3d { --yaw: 7deg; }
+
+  /* JS fallback for browsers without scroll-driven animations */
+  .js.nosda .card3d { opacity: 0; transform: translate3d(0, 60px, -260px) rotateX(12deg); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+  .js.nosda .card3d.in { opacity: 1; transform: none; }
+
+  .marker {
+    position: absolute; left: 50%; top: 16vh; width: 15px; height: 15px;
+    border-radius: 50%; background: var(--paper); border: 2px solid var(--line);
+    transform: translate(-50%, 26px); z-index: 3;
+  }
+  .stage.key .marker { border-color: var(--accent); background: var(--accent); }
+
+  .yr {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.08em;
+    color: var(--accent); font-variant-numeric: tabular-nums; font-weight: 600;
+    text-transform: uppercase; margin: 0 0 12px;
+  }
+  .org {
+    font-family: var(--serif); font-size: clamp(28px, 4.6vw, 42px); font-weight: 700;
+    letter-spacing: -0.02em; line-height: 1.06; margin: 0 0 6px; color: var(--ink);
+  }
+  .role { font-family: var(--mono); font-size: 13px; color: var(--ink-faint); margin: 0 0 16px; }
+  .desc { font-size: 15.5px; color: var(--ink-soft); margin: 0; max-width: 52ch; }
+  .desc b { color: var(--ink); font-weight: 600; }
+  .chip {
+    display: inline-flex; align-items: baseline; gap: 9px; margin-top: 18px;
+    font-family: var(--mono); font-size: 13px; color: var(--accent-ink);
+    background: var(--accent-wash); border-radius: 8px; padding: 8px 13px;
+    font-variant-numeric: tabular-nums;
+  }
+  .chip b { font-size: 17px; font-weight: 700; }
+
+  /* ============ numbers, deliberately flat and scannable ============ */
+  .numbers { padding: 90px 0 70px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 30px; }
+  .sec-head {
+    font-family: var(--serif); font-weight: 700; font-size: clamp(25px, 3.8vw, 36px);
+    letter-spacing: -0.017em; margin: 0 0 8px; text-wrap: balance;
+  }
+  .sec-sub { font-size: 15.5px; color: var(--ink-faint); margin: 0 0 32px; max-width: 56ch; }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+  @media (min-width: 700px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .tile {
+    background: var(--raise); border: 1px solid var(--line); border-radius: 16px;
+    padding: 26px 28px 24px;
+  }
+  .tile .field {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 10px;
+  }
+  .tile .big {
+    font-family: var(--serif); font-weight: 700; font-size: clamp(38px, 6vw, 58px);
+    line-height: 1; letter-spacing: -0.03em; color: var(--accent);
+    font-variant-numeric: tabular-nums; margin-bottom: 10px;
+  }
+  .tile .big small { font-size: 0.42em; color: var(--ink-faint); font-weight: 400; letter-spacing: 0; }
+  .tile p { margin: 0; font-size: 14.5px; color: var(--ink-soft); }
+  .tile p b { color: var(--ink); font-weight: 600; }
+  .tile.wide { grid-column: 1 / -1; }
+
+  /* ============ close ============ */
+  .close { padding: 90px 0 40px; text-align: center; }
+  .close .motto {
+    font-family: var(--serif); font-weight: 700; font-size: clamp(26px, 5vw, 46px);
+    line-height: 1.18; letter-spacing: -0.02em; text-wrap: balance;
+    max-width: 18ch; margin: 0 auto 16px;
+  }
+  .close .motto em { font-style: italic; color: var(--accent); }
+  .close .sub { font-size: 16px; color: var(--ink-faint); margin: 0 0 30px; }
+
+  footer { padding: 26px 0 46px; border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 6px 20px; font-family: var(--mono); font-size: 12px; color: var(--ink-faint); }
+  footer a { color: var(--ink-soft); }
+
+  /* ============ reduced motion: everything static ============ */
+  @media (prefers-reduced-motion: reduce) {
+    .card3d { animation: none !important; opacity: 1 !important; transform: none !important; position: relative; top: auto; }
+    .stage { height: auto; min-height: 0; margin-bottom: 26px; }
+    .marker { display: none; }
+    .spine { display: none; }
+    .progress { animation: none; transform: scaleX(0); }
+    .cue .bar::after { animation: none; transform: scaleX(1); }
+    .hero .glow { animation: none; }
+    .js.nosda .card3d { opacity: 1; transform: none; transition: none; }
+  }
+
+  @media (max-width: 620px) {
+    .journey { perspective: 900px; }
+    .stage { height: auto; min-height: 0; margin-bottom: 20px; }
+    .card3d { position: relative; top: auto; padding: 26px 24px 24px; }
+    .marker { display: none; }
+    .spine { display: none; }
+    @supports (animation-timeline: view()) {
+      .card3d { animation: cardEnter linear both; animation-timeline: view(); animation-range: entry 0% cover 30%; }
+    }
+  }
+</style>
+
+<div class="progress"></div>
+
+<script>
+  document.documentElement.classList.add('js');
+  if (!(CSS && CSS.supports && CSS.supports('animation-timeline: view()'))) {
+    document.documentElement.classList.add('nosda');
+  }
+</script>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="who"><b>AB</b> · Abdullah Khalid · for Model ML</span>
+    <a class="planlink" href="./strategy.html">What I'd do at Model ML &rarr;</a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="glow"></div>
+  <div class="wrap">
+    <p class="kicker">Career Journey · Strategy &amp; Operations</p>
+    <h1>Founder who exited.<br><em>Builder who ships.</em></h1>
+    <p class="lede">A decade from a Lahore dorm room to buy-side diligence on <b>50M to 1.5B GBP</b> deals, building the AI systems myself the whole way.</p>
+    <span class="cue"><span class="bar"></span> Scroll to travel</span>
+  </div>
+</header>
+
+<main>
+  <div class="journey">
+    <div class="spine"><div class="fill"></div></div>
+
+    <section class="stage">
+      <div class="marker"></div>
+      <div class="wrap">
+        <article class="card3d">
+          <p class="yr">2016 · where it starts</p>
+          <h2 class="org">LUMS, Lahore</h2>
+          <p class="role">BSc Economics</p>
+          <p class="desc">Top 0.01% in the entry exam. Founded the <b>LUMS Consulting Club</b>, secured $10K of sponsorship and ran case-prep for 1,000 students with six consulting firms. The first thing I ever built was an institution.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="stage key">
+      <div class="marker"></div>
+      <div class="wrap">
+        <article class="card3d">
+          <p class="yr">Feb 2016 to Mar 2019 · the exit</p>
+          <h2 class="org">Magic Sauce</h2>
+          <p class="role">Founder · cloud-kitchen SaaS, Pakistan</p>
+          <p class="desc">Founded and scaled a cloud-kitchen SaaS platform to <b>35+ restaurant operators</b> on a hybrid subscription and commission model, building the pricing architecture, onboarding funnel and unit economics that made it acquirable. Then <b>ran the sell-side process to close</b>, negotiating an exit to a foodpanda competitor at <b>5x EBITDA</b>. The first M&amp;A process I ran, from the operator's side of the table.</p>
+          <span class="chip"><b>Founded &rarr; Acquired</b> &nbsp;·&nbsp; <b>5x</b> EBITDA</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="stage">
+      <div class="marker"></div>
+      <div class="wrap">
+        <article class="card3d">
+          <p class="yr">Jan 2019 to Aug 2022 · scale</p>
+          <h2 class="org">MHK Enterprise</h2>
+          <p class="role">Strategy Associate, promoted twice · Pakistan</p>
+          <p class="desc">Strategy and transformation for a <b>$100M healthcare consulting firm</b> with Pfizer, GSK, Novartis and Roche in its portfolio. Operating-model design, KPI governance and cross-functional delivery across diagnostics and healthcare operations, scaling diagnostics into <b>24 hospitals</b>.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="stage">
+      <div class="marker"></div>
+      <div class="wrap">
+        <article class="card3d">
+          <p class="yr">Sep 2022 to Dec 2024 · the operator</p>
+          <h2 class="org">Nootra Foods</h2>
+          <p class="role">Finance Head (VP) · FMCG pet nutrition, US / Canada / UAE</p>
+          <p class="desc">Ran a <b>100-day value-creation plan</b> with named owners, KPI targets and weekly cadence. Redesigned pricing and formulation economics across 8 SKUs to expand margin <b>20%</b> while protecting volumes.</p>
+          <span class="chip"><b>+20%</b> margin</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="stage">
+      <div class="marker"></div>
+      <div class="wrap">
+        <article class="card3d">
+          <p class="yr">2025 · the capstone</p>
+          <h2 class="org">INSEAD</h2>
+          <p class="role">MBA</p>
+          <p class="desc"><b>President of the FinTech Club</b>, sole recipient of the MBA'03J Leadership Memorial Scholarship, and a member of the Private Equity Group. Ten years of operating, then the theory.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="stage key">
+      <div class="marker"></div>
+      <div class="wrap">
+        <article class="card3d">
+          <p class="yr">Mar 2025 to Oct 2025 · building the thing</p>
+          <h2 class="org">Farnam Capital</h2>
+          <p class="role">Investment Associate · 60M GBP B2B-services PE fund</p>
+          <p class="desc">I built an <b>AI-scored screening engine</b> that expanded the qualified pipeline 4x to 1,200+ targets, cut sourcing time, and surfaced the deals that reached IC. Model ML's product, built by hand, by a PE person, before I met Model ML.</p>
+          <span class="chip"><b>4x</b> pipeline &nbsp;·&nbsp; <b>1,200+</b> targets</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="stage key">
+      <div class="marker"></div>
+      <div class="wrap">
+        <article class="card3d">
+          <p class="yr">Jan 2026 to now · current</p>
+          <h2 class="org">Private Equity Consultant</h2>
+          <p class="role">Independent · buy-side and sell-side diligence, UK</p>
+          <p class="desc">Origination, screening and pre-deal evaluation for boutique PE funds. <b>Companies House pipelines across 3,000+ managed-service providers</b>, roll-up LBO models, IC materials, and digital-asset M&amp;A on a <b>1.5B GBP</b> target.</p>
+          <span class="chip"><b>50M to 1.5B GBP</b> EV</span>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <section class="numbers">
+    <div class="wrap">
+      <h2 class="sec-head">The numbers, without the scrolling</h2>
+      <p class="sec-sub">Everything above, in the form a partner would actually read it.</p>
+      <div class="grid">
+        <div class="tile wide">
+          <div class="field">Farnam Capital · AI screening engine</div>
+          <div class="big">4x <small>to 1,200+ targets</small></div>
+          <p>Hand-built, AI-scored deal screening for a London PE fund. <b>The closest thing to Model ML's product that I have built myself.</b></p>
+        </div>
+        <div class="tile">
+          <div class="field">Independent PE consulting</div>
+          <div class="big">3,000+</div>
+          <p>Managed-service providers mapped into <b>Companies House pipelines</b> for UK buy-and-build.</p>
+        </div>
+        <div class="tile">
+          <div class="field">Nootra Foods</div>
+          <div class="big">+20%</div>
+          <p>Margin expansion across 8 SKUs, <b>volumes protected</b> in UAE and South Asia.</p>
+        </div>
+        <div class="tile wide">
+          <div class="field">Buy-side and sell-side diligence</div>
+          <div class="big">1.5B <small>GBP, largest deal EV</small></div>
+          <p>Commercial and financial diligence, QoE-style analysis and LBO / DCF modelling across <b>B2B services, retail, digital assets, healthcare and software</b>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="close">
+    <div class="wrap">
+      <p class="motto">It's not the pursuit of happiness. It's the <em>happiness of the pursuit.</em></p>
+      <p class="sub">You don't find the journey. You build it.</p>
+      <a class="planlink" href="./strategy.html">Read what I'd do at Model ML &rarr;</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Abdullah Khalid (AB)</span>
+    <span><a href="mailto:akbar.khalid@insead.edu">akbar.khalid@insead.edu</a></span>
+    <span><a href="https://linkedin.com/in/akbar-khalid">linkedin.com/in/akbar-khalid</a></span>
+    <span>Prepared for Model ML, Strategy &amp; Operations</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // JS fallback: only runs where scroll-driven animations are unsupported
+    if (root.classList.contains('nosda') && !reduce && 'IntersectionObserver' in window) {
+      var cards = document.querySelectorAll('.card3d');
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+      }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+      cards.forEach(function (c) { io.observe(c); });
+
+      // progress bar fallback
+      var bar = document.querySelector('.progress');
+      var ticking = false;
+      addEventListener('scroll', function () {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          var h = document.documentElement.scrollHeight - innerHeight;
+          bar.style.transform = 'scaleX(' + (h > 0 ? scrollY / h : 0) + ')';
+          ticking = false;
+        });
+      }, { passive: true });
+    }
+  })();
+</script>
