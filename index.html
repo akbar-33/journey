@@ -81,6 +81,11 @@
     transition: background .18s ease;
   }
   .planlink:hover { background: var(--accent-ink); text-decoration: none; }
+  .planlink--ghost {
+    background: transparent; color: var(--accent-ink); border: 1px solid var(--line);
+  }
+  .planlink--ghost:hover { background: var(--accent-wash); color: var(--accent-ink); }
+  .toplinks { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 
   /* ============ hero, with depth ============ */
   .hero {
@@ -310,7 +315,10 @@
 <div class="topbar">
   <div class="wrap">
     <span class="who"><b>AB</b> · Abdullah Khalid · for Model ML</span>
-    <a class="planlink" href="./strategy.html">What I'd do at Model ML &rarr;</a>
+    <div class="toplinks">
+      <a class="planlink planlink--ghost" href="./world.html">See it as a scroll-world &rarr;</a>
+      <a class="planlink" href="./strategy.html">What I'd do at Model ML &rarr;</a>
+    </div>
   </div>
 </div>
 
