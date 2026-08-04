@@ -219,9 +219,39 @@
   .js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1); }
   .js .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; transition: none; } }
+
+  /* ============ topbar ============ */
+  .topbar { border-bottom: 1px solid var(--line); background: var(--raise); position: relative; z-index: 20; }
+  .topbar .wrap {
+    display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center;
+    justify-content: space-between; padding-top: 13px; padding-bottom: 13px;
+  }
+  .topbar .who { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); letter-spacing: 0.04em; }
+  .topbar .who b { color: var(--ink); font-weight: 600; }
+  .toplinks { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .planlink {
+    display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 600;
+    color: var(--paper); background: var(--accent); border-radius: 8px; padding: 9px 16px;
+    transition: background .18s ease;
+  }
+  .planlink:hover { background: var(--accent-ink); text-decoration: none; }
+  .planlink--ghost {
+    background: transparent; color: var(--accent-ink); border: 1px solid var(--line);
+  }
+  .planlink--ghost:hover { background: var(--accent-wash); color: var(--accent-ink); }
 </style>
 
 <script>document.documentElement.classList.add('js');</script>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="who"><b>AB</b> · Abdullah Khalid · for Model ML</span>
+    <div class="toplinks">
+      <a class="planlink planlink--ghost" href="./world.html">See it as a scroll-world &rarr;</a>
+      <a class="planlink" href="./index.html">&larr; The career journey</a>
+    </div>
+  </div>
+</div>
 
 <header class="mast">
   <div class="wrap">
