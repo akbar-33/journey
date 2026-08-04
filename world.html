@@ -7,13 +7,42 @@
   <meta name="description" content="Scroll to fly through a career: founder with an exit, the AI screening engine, and arriving at Model ML." />
   <meta name="robots" content="noindex, nofollow">
   <style>
+    /* Same dark-mode tokens as index.html / strategy.html, so all three pages
+       read as one system rather than three different colour schemes. */
     :root, .sw-root {
-      --sw-bg: #14171C;
+      --sw-bg: #121316;
       --sw-ink: #ECECEA;
-      --sw-ink-soft: #A7ADB5;
-      --sw-accent: #E8B14C;
+      --sw-ink-soft: #AAAEB5;
+      --sw-accent: #3BBE90;
     }
-    html, body { background: #14171C; }
+    html, body { background: #121316; }
+
+    /* The engine's own CSS uses var(--sw-ink) as a SURFACE colour for these
+       elements (assuming its light-mode default, where --sw-ink is dark), paired
+       with a hardcoded white text colour. Overriding --sw-ink to a light colour
+       for a dark theme breaks that assumption everywhere it happens: light text
+       on a now-light background. Fixed here with dark, theme-consistent surfaces
+       instead of the engine's light/white defaults. */
+    .sw-topcta, .sw-btn--primary {
+      background: var(--sw-accent);
+      color: #0B1210;
+      border-color: transparent;
+    }
+    .sw-nav {
+      background: rgba(18, 19, 22, 0.72);
+      border-color: rgba(255, 255, 255, 0.10);
+    }
+    .sw-nav__item.is-active { background: var(--sw-accent); color: #0B1210; }
+    .sw-route__label {
+      background: rgba(18, 19, 22, 0.88);
+      color: var(--sw-ink);
+      border-color: rgba(255, 255, 255, 0.10);
+    }
+    .sw-copy__tags li {
+      background: color-mix(in srgb, var(--sw-accent) 16%, transparent);
+      color: var(--sw-accent);
+      border-color: color-mix(in srgb, var(--sw-accent) 32%, transparent);
+    }
   </style>
 </head>
 <body>
@@ -33,7 +62,7 @@
           id: 'magic-sauce', label: 'Magic Sauce',
           still: 'assets/scene1.jpg',
           clip: 'assets/vid/scene1.mp4',
-          accent: '#E8B14C',
+          accent: '#3BBE90',
           eyebrow: '2015 to 2019 — the exit',
           title: 'Founded it. Then sold it.',
           body: 'A cloud-kitchen SaaS scaled to 35+ restaurant operators, exited to a foodpanda competitor at 5x EBITDA.',
@@ -43,7 +72,7 @@
           id: 'farnam', label: 'Farnam Capital',
           still: 'assets/scene2.jpg',
           clip: 'assets/vid/scene2.mp4',
-          accent: '#E8B14C',
+          accent: '#3BBE90',
           eyebrow: '2025 — building the thing',
           title: 'I built the screening engine myself.',
           body: 'An AI-scored deal-screening system that expanded a fund’s qualified pipeline 4x, to 1,200+ targets.',
@@ -53,7 +82,7 @@
           id: 'now', label: 'Model ML',
           still: 'assets/scene3.jpg',
           clip: 'assets/vid/scene3.mp4',
-          accent: '#E8B14C',
+          accent: '#3BBE90',
           eyebrow: '2026 — arriving',
           title: 'Now building it for Model ML.',
           body: 'Buy-side diligence on £50M to £1.5B deals, and the AI systems behind the work.',
