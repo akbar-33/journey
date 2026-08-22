@@ -62,7 +62,10 @@
           id: 'magic-sauce', label: 'Magic Sauce',
           still: 'assets/scene1.jpg',
           clip: 'assets/vid/scene1.mp4',
+          clipMobile: 'assets/vid/scene1-m.mp4',
+          stillMobile: 'assets/scene1-m.jpg',
           accent: '#3BBE90',
+          scroll: 1.5, linger: 0.4,
           eyebrow: '2016 to 2019 · the exit',
           title: 'Founded it. Then sold it.',
           body: 'A cloud-kitchen SaaS scaled to 35+ restaurant operators, exited to a foodpanda competitor at 5x EBITDA.',
@@ -72,6 +75,8 @@
           id: 'farnam', label: 'Farnam Capital',
           still: 'assets/scene2.jpg',
           clip: 'assets/vid/scene2.mp4',
+          clipMobile: 'assets/vid/scene2-m.mp4',
+          stillMobile: 'assets/scene2-m.jpg',
           accent: '#3BBE90',
           eyebrow: '2025 · building the thing',
           title: 'I built the screening engine myself.',
@@ -82,7 +87,10 @@
           id: 'now', label: 'Model ML',
           still: 'assets/scene3.jpg',
           clip: 'assets/vid/scene3.mp4',
+          clipMobile: 'assets/vid/scene3-m.mp4',
+          stillMobile: 'assets/scene3-m.jpg',
           accent: '#3BBE90',
+          scroll: 1.6, linger: 0.45,
           eyebrow: '2026 · arriving',
           title: 'Why Model ML is next.',
           body: 'Buy-side diligence on £50M to £1.5B deals, and the AI systems behind the work.',
@@ -91,13 +99,13 @@
                  secondary: { label: 'The career journey', href: 'https://akbar-33.github.io/journey/' } },
         },
       ],
-      // Only one connector exists (Magic Sauce -> Farnam). The Farnam -> Now join
-      // has no connector clip, so the engine crossfades directly between the two
-      // dives instead of flying over (see scrub-engine.js line ~93).
-      connectors: [
-        'assets/vid/conn1.mp4',
-        null,
-      ],
+      // Architecture A (continuous forward take): the legs ARE the journey, so there are
+      // no connector clips. Each leg was rendered from the previous leg's ACTUAL last frame,
+      // so every seam is frame-locked and the camera never reverses. The old dive+aerial-
+      // connector build was architecture B, which the skill reserves for diorama worlds: on
+      // photoreal interiors the pull-out reversal reads as a rewind stutter.
+      connectors: [],
+      crossfade: 0.08,
     });
   </script>
 </body>
